@@ -1,0 +1,32 @@
+{
+  "name": "overseer",
+  "version": "1.0.0",
+  "description": "Free, IOT Device Monitor",
+  "keywords": [
+    "observability",
+    "monitoring"
+  ],
+  "homepage": "https://github.com/ahampson/overseer#readme",
+  "bugs": {
+    "url": "https://github.com/ahampson/overseer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahampson/overseer.git"
+  },
+  "license": "ISC",
+  "author": "Adam Hampstar",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "build": "node bin/build.js",
+    "start": "node app.js",
+    "test": "npx jest"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "helmet": "^8.2.0",
+    "pug": "^3.0.4"
+  }
+}
