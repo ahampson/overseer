@@ -7,12 +7,8 @@ html(lang="en")
     link(rel="stylesheet" href="/styles.css")
   body
     header
-      h1 Overseer Application
-      nav
-        ul
-          li: a(href="/").active Home
-          li: a(href="/devices") Devices
-          li: a(href="/settings") Settings
-    block content
+      block header
+    main
+      block content
     footer
       p &copy; 2026 Overseer. All rights reserved.

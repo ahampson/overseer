@@ -1,11 +1,21 @@
 const fs = require('fs');
 const crypto = require('crypto');
+const path = require('path');
+const utils = require('./utilitys');
 
-// Read the .env.example file
-let env = fs.readFileSync('.env.example', 'utf8');
+console.log('<#=======================================================#>');
+console.log(' Overseer Build Script Started:', new Date().toLocaleString());
+console.log('<#=======================================================#>');
 
-// Replace placeholder with a generated secret
-env = env.replace('__GENERATE__', crypto.randomBytes(64).toString('hex'));
+if(utils.createEnvFile()){
+    console.log('✔ .env created with generated values');
+    utils.loadEnvFile();
+}else{
+    console.log('✖ Failed to create .env file');
+};
 
-fs.writeFileSync('.env', env);
-console.log('✔ .env created with generated values');
+if(utils.initializeDatabase(process.env.DATABASE_URL.replace('sqlite://', ''))){
+    console.log('✔ Database initialized');
+}else{
+    console.log('✖ Failed to initialize database');
+};
