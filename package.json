@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "express": "^5.2.1",
+    "express-fileupload": "^1.5.2",
     "express-session": "^1.19.0",
     "helmet": "^8.2.0",
     "pug": "^3.0.4",

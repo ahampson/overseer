@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  background-color: darkcyan;
 }
 
 body {
@@ -33,7 +34,6 @@ nav ul {
   border-bottom: 1px solid #555;
 }
 
-
 nav ul li {
   margin: 0 1em;
   padding: 1em 0.2em;
@@ -58,14 +58,13 @@ footer {
   padding: 1em;
   background-color: darkcyan;
   color: #fff;
-  position: fixed;
-  bottom: 0;
   width: 100%;
 }
 
 h1 {
   font-size: 2em;
   margin-bottom: 0.5em;
+  text-align: center;
 }
 
 h2 {
@@ -85,6 +84,43 @@ table {
   border: 1px solid #ccc;
 }
 
+button, .button {
+  padding: 0.5em 1em;
+  background-color: darkcyan;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:hover, .button:hover {
+  background-color: #006666;
+}
+
+form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 1em;
+}
+
+.submit-button {
+  grid-column: span 2;
+  justify-self: center;
+  padding: 0.5em 1em;
+  background-color: darkcyan;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #006666;
+}
+
 @media all and (min-width: 450px) {
   header{
     text-align: center;
@@ -98,6 +134,7 @@ table {
   main {
     max-width: 80vw;
     margin: 0 auto;
+    margin-bottom: 10vh;
   }
 }
 
@@ -115,14 +152,21 @@ table {
   }
 
   main {
-    max-width: 65vw;
+    width: 65vw;
     margin: 0;
     display: inline-block;
     vertical-align: top;
+    padding: 0em;
+    padding-bottom: 10vh;
+  }
+
+  h1 {
+    font-size: 2em;
   }
 
   footer {
-    position: absolute;
     height: 5vh;
+    position: fixed;
+    bottom: 0;
   }
 }

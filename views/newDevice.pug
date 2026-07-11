@@ -11,23 +11,21 @@ block header
 
 block content
     h1 Add New Device
+    h2 Manual Device Entry
     p Use the form below to add a new device to the Overseer inventory. Fill in the required fields and click "Add Device" to submit the information. The new device will be added to the inventory and can be monitored through the application.
     form(action="/inventory/new" method="POST")
-        div
-            label(for="deviceName") Device Name:
-            input(type="text" id="deviceName" name="deviceName" required)
-        div
-            label(for="ipaddress") IP Address:
-            input(type="text" id="ipaddress" name="ipaddress" required)
-        div
-            button(type="submit") Add Device
-    p Alternatively, you can upload a CSV file containing multiple devices to add them to the inventory at once. Use the form below to select and upload your device file. The CSV file should follow the specified format for successful processing.
+        label(for="deviceName") Device Name:
+        input(type="text" id="deviceName" name="deviceName" required)
+        label(for="ipaddress") IP Address:
+        input(type="text" id="ipaddress" name="ipaddress" required)
+        button(type="submit").submit-button Add Device
+    h2 Upload Devices via CSV
+    p You can also upload multiple devices at once using a CSV file. Please ensure the CSV file follows the correct format. You can download a sample CSV file for reference.
     form(action="/inventory/upload" method="POST" enctype="multipart/form-data")
-        a(href="/samplefile.csv") Sample CSV File for Upload
-        div
-            label(for="deviceFile") Upload Device File:
-            input(type="file" id="deviceFile" name="deviceFile" accept=".csv" required)
-        div
-            button(type="submit") Upload File
+        label(for="sampleFile") Download CSV File:
+        a(href="/samplefile.csv") Sample Device File 
+        label(for="deviceFile") Upload Device File:
+        input(type="file" id="deviceFile" name="deviceFile" accept=".csv" required)
+        button(type="submit").submit-button Upload File
     
 

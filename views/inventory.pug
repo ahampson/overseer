@@ -15,7 +15,7 @@ block content
   p Device Count: #{devices.length}
   if devices.length === 0
     p No devices found in the inventory. Please add new devices using the 
-      a(href="/inventory/new") "Add New Device"
+      a(href="/inventory/new").button Add New Device
       span  option in the navigation menu.
   else
     div

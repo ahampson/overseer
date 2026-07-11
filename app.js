@@ -29,21 +29,16 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+
+var inventory = require('./routes/inventory.js');
+app.use('/inventory', inventory);
+
 app.get('/', (req, res) => {
   res.render('index');
-});
-
-app.get('/inventory', (req, res) => {
-  db.getAllDevices().then(devices => {
-      res.render('inventory', { devices });
-    }).catch(err => {
-      console.error('Error fetching devices:', err);
-      res.status(500).render('error', { message: 'Internal Server Error', status: 500 });
-    });
-});
-
-app.get('/inventory/new', (req, res) => {
-  res.render('newDevice');
 });
 
 app.get('/alerts', (req, res) => {
