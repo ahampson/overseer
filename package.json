@@ -20,7 +20,7 @@
   "main": "app.js",
   "scripts": {
     "build": "node bin/build.js",
-    "start": "node app.js",
+    "start": "node --env-file .env app.js ",
     "test": "npx jest"
   },
   "dependencies": {

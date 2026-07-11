@@ -16,8 +16,8 @@ pids
 *.pid.lock
 
 # Dev tools cache
-.code-workspace
-.vscode-test
+*.code-workspace
+*.vscode-test
 
 # Database files
 *.sqlite

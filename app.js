@@ -42,6 +42,10 @@ app.get('/inventory', (req, res) => {
     });
 });
 
+app.get('/inventory/new', (req, res) => {
+  res.render('newDevice');
+});
+
 app.get('/alerts', (req, res) => {
   res.render('index');
 });

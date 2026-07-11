@@ -1,26 +1,34 @@
 extends layout.pug
 
 block header
-    h1 Overseer Application
+    h1 Overseer - Inventory
     nav
-        ul
-            li: a(href="/") Dashboard
-            li: a(href="/inventory").active Inventory
-            li: a(href="/alerts") Alerts
-            li: a(href="/settings") Settings
+      ul
+        li: a(href="/") Dashboard
+      ul.active
+        li: a(href="/inventory").active Inventory
+        li: a(href="/inventory/new") Add New Device
 
 block content
   h1 Device Inventory
-  div
-    table
-      thead
-        tr
-          th ID
-          th Name
-          th Status
-      tbody
-        each device in devices
+  p Below is a list of all devices currently being monitored by the Overseer application. You can view the device ID, name, and status. Use the navigation menu to add new devices or return to the dashboard.
+  p Device Count: #{devices.length}
+  if devices.length === 0
+    p No devices found in the inventory. Please add new devices using the 
+      a(href="/inventory/new") "Add New Device"
+      span  option in the navigation menu.
+  else
+    div
+      table
+        thead
           tr
-            td= device.ID
-            td= device.Name
-            td= device.Status
+            th ID
+            th Name
+            th Status
+        tbody
+          each device in devices
+            tr
+              td= device.ID
+              td= device.Name
+              td= device.Status
+  p Use the navigation menu to add new devices or return to the dashboard.

@@ -37,20 +37,12 @@ async function initializeDatabase(filePath) {
             return false;
         } else {
             console.log('Connected to the SQLite database:', filePath);
-            db.run(`CREATE TABLE IF NOT EXISTS DeviceTypes_Table (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                TypeName TEXT UNIQUE NOT NULL,
-                Description TEXT,
-                Ports TEXT
-            )`);
             db.run(`CREATE TABLE IF NOT EXISTS Devices_Table ( 
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Name TEXT UNIQUE NOT NULL,
                 IPAddress TEXT NOT NULL,
                 Status TEXT NOT NULL,
-                LastUpdated TEXT NOT NULL,
-                DeviceType_ID integer NOT NULL,
-                CONSTRAINT FK_DeviceType FOREIGN KEY (DeviceType_ID) REFERENCES DeviceTypes_Table(id)
+                LastUpdated TEXT NOT NULL
             )`);
         }
     });
