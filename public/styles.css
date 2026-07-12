@@ -154,11 +154,13 @@ form{
 .online{
   background-color: green;
   font-weight: bold;
+  color: white;
 }
 
 .offline{
   background-color: red;
   font-weight: bold;
+  color: black;
 }
 
 .maintenance{

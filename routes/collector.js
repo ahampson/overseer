@@ -7,4 +7,8 @@ router.get('/', (req, res) => {
     res.render('collector');
 });
 
+router.post('/start', (req, res) =>{
+    res.render('start');
+});
+
 module.exports = router;

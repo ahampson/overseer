@@ -78,10 +78,10 @@ Get-Job | ForEach-Object{
         'Port'=$($_.Name).Split('_')[1]
     }
     If(Receive-Job -Job $_ -Wait -AutoRemoveJob){
-        Write-Host -ForegroundColor Green "[!] $($_.Name)"
+        #Write-Host -ForegroundColor Green "[!] $($_.Name)"
         $Results | Add-Member -MemberType NoteProperty -Name Status -Value $true
     }else{
-        Write-Host -ForegroundColor Red "[x] $($_.Name)"
+        #Write-Host -ForegroundColor Red "[x] $($_.Name)"
         $Results | Add-Member -MemberType NoteProperty -Name Status -Value $false
     }
     $Report += $Results

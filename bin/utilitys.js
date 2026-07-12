@@ -44,6 +44,11 @@ async function initializeDatabase(filePath) {
                 Status TEXT NOT NULL,
                 LastUpdated TEXT NOT NULL
             )`);
+            db.run(`CREATE TABLE IF NOT EXISTS StatusCollector_Table (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Status TEXT UNIQUE NOT NULL,
+                ProcessID INTEGER UNIQUE NOT NULL
+            )`);
         }
     });
     return true;

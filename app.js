@@ -1,12 +1,14 @@
 const express = require('express');
 const session = require('express-session');
 const helmet = require('helmet');
+const fs = require('fs')
 const path = require('path');
 const pug = require('pug');
 const app = express()
 const port = process.env.PORT || 8080;
 const utils = require('./bin/utilitys');
 const db = require('./bin/database');
+const morgan = require('morgan');
 
 console.log(`
 <#=======================================================#>  
@@ -25,6 +27,10 @@ app.use(session({
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'LogFiles', 'overseer.log'), { flags: 'a' })
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms', { stream: accessLogStream }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
