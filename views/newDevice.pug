@@ -1,12 +1,12 @@
 extends layout.pug
 
 block header
-    h1 Overseer - Inventory
     nav
       ul
         li: a(href="/") Dashboard
+        li: a(href="/inventory").active Inventory
+        li: a(href="/collector") Status Collector
       ul.active
-        li: a(href="/inventory") Inventory
         li: a(href="/inventory/new").active Add New Device
 
 block content

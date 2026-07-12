@@ -1,12 +1,12 @@
 extends layout.pug
 
 block header
-    h1 Overseer - Inventory
     nav
       ul
         li: a(href="/") Dashboard
-      ul.active
         li: a(href="/inventory").active Inventory
+        li: a(href="/collector") Status Collector
+      ul.active
         li: a(href="/inventory/new") Add New Device
 
 block content
@@ -22,13 +22,25 @@ block content
       table
         thead
           tr
-            th ID
             th Name
+            th IP Address
             th Status
+            th Last Updated
         tbody
           each device in devices
             tr
-              td= device.ID
               td= device.Name
-              td= device.Status
+              td= device.IPAddress
+              if device.Status === 'Online'
+                td.online= device.Status
+              else if device.Status === 'Offline'
+                td.offline= device.Status
+              else if device.Status === 'Maintenance'
+                td.maintenance= device.Status
+              else if device.Status === 'Unknown'
+                td.unknown= device.Status
+              else
+                td= device.Status
+              td
+                time(datetime=device.LastUpdated)=device.LastUpdated
   p Use the navigation menu to add new devices or return to the dashboard.

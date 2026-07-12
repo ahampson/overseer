@@ -1,0 +1,16 @@
+extends layout.pug
+
+block header
+    nav
+      ul
+        li: a(href="/") Dashboard
+        li: a(href="/inventory") Inventory
+        li: a(href="/collector").active Status Collector
+      ul.active
+        li: a(href="/changes") Change Log        
+
+block content
+    h2 Status Collector Service
+    p Start or Stop the Status collector service
+    button Start
+    button Stop

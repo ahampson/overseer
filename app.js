@@ -23,19 +23,18 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(helmet());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-
-
 var inventory = require('./routes/inventory.js');
+var collector = require('./routes/collector.js')
 app.use('/inventory', inventory);
+app.use('/collector', collector);
 
 app.get('/', (req, res) => {
   res.render('index');

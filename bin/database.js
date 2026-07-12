@@ -19,8 +19,8 @@ function getAllDevices() {
 
 function addDevice(device) {
     return new Promise((resolve, reject) => {
-        const { Name, IP_Address, Status } = device;
-        db.run('INSERT INTO Devices_Table (Name, IP_Address, Status) VALUES (?, ?, ?)', [Name, IP_Address, Status], function(err) {
+        const { name, ip_address } = device;
+        db.run('INSERT INTO Devices_Table (Name, IPAddress, Status, LastUpdated) VALUES (?, ?, ?, ?)', [name, ip_address, 'unknown', new Date().toISOString()], function(err) {
             if (err) {
                 reject(err);
             } else {

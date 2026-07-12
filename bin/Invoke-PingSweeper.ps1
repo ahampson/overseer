@@ -61,11 +61,9 @@ ForEach($Target in $ComputerName){
         }
 
     # If exactly one port is provided, test that port AND a no-port test (-1)
-    }If($Ports.length -eq 1){
+    }If($Ports.length -eq 1 -and $Ports[0] -gt 0){
         # Start job for single port and ping-style test
-        $TaskList += Start-Job -Name $($Target+"_"+$Port) -ScriptBlock $PingTest -ArgumentList $Target,$Ports
-
-    # If no ports are provided, run a single ping-style test
+        $TaskList += Start-Job -Name $($Target) -ScriptBlock $PingTest -ArgumentList $Target,$([int]$Ports[0])
     }
     $TaskList += Start-Job -Name $Target -ScriptBlock $PingTest -ArgumentList $Target
 }
@@ -91,3 +89,4 @@ Get-Job | ForEach-Object{
 
 Write-Output $Report
 
+#>
